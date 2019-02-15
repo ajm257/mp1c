@@ -6,4 +6,8 @@
  * Time: 9:08 PM
  */
 
-echo 'test123';
+ini_set('display_errors', 'On');
+error_reporting(E_ALL | E_STRICT);
+
+
+
