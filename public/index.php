@@ -17,7 +17,6 @@ class main {
 
         $records = csv::getRecords($filename);
 
-        print_r($records);
     }
 }
 
@@ -31,7 +30,7 @@ class csv {
         {
             $record = fgetcsv($file);
 
-            $records[] = recordFactory::create();
+            $records[] = recordFactory::create($record);
         }
 
         fclose($file);
@@ -40,7 +39,12 @@ class csv {
     }
 }
 
-class record {  //object instantiation
+class record { //object instantiation
+
+    public function __construct(Array $record = null) {
+
+        print_r($record);
+    }
 
 }
 
@@ -48,7 +52,7 @@ class recordFactory { //what makes the object
 
     public static function create(Array $array = null) { //can be an empty object
 
-        $record = new record();
+        $record = new record($array);
 
         return $record;
 
