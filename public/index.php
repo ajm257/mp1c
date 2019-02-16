@@ -9,27 +9,39 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 
-main::start();
+main::start("example.csv");
 
 class main {
 
-    static public function start () {
-        $records = csv::getRecords();
-        $table = html::generateTable($records);
-        system::printPage($table);
+    static public function start ($filename) {
+
+        $records = csv::getRecords($filename);
+
+        print_r($records);
     }
 }
 
 class csv {
 
-    static public function getRecords() {
+    static public function getRecords($filename) {
 
-        $records = 'test sjhsdf';
+        $file = fopen($filename,"r");
+
+        while(! feof($file))
+        {
+            $record = fgetcsv($file);
+
+            $records[] = $record;
+        }
+
+        fclose($file);
+
         return $records;
     }
 }
 
-class html {
+
+/* class html {
 
     static public function generateTable($records) {
 
@@ -45,5 +57,5 @@ class system {
 
         echo $page;
     }
-}
+} */
 
