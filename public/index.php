@@ -16,13 +16,10 @@ class main {
     static public function start ($filename) {
 
         $records = csv::getRecords($filename);
-        foreach ($records as $record) {
-           $array = $record->returnArray();
-           print_r($array);
+        $table = html::generateTable($records);
+
 
         }
-
-    }
 }
 
 class csv {
@@ -99,17 +96,24 @@ class recordFactory { //what makes the object
 
 }
 
-/* class html {
+class html
+{
 
-    static public function generateTable($records) {
+    static public function generateTable($records)
+    {
 
-        $table = $records;
+        foreach ($records as $record) {
+            $array = $record->returnArray();
+            print_r($array);
 
-        return $table;
+            /*$table = $records;
+
+            return $table; */
+        }
     }
 }
 
-class system {
+/*class system {
 
     static public function printPage($page) {
 
