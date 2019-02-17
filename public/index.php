@@ -59,8 +59,8 @@ class record { //object instantiation
 
     public function __construct(Array $fieldNames = null, $values = null) {
 
-        print_r($fieldNames);
-        print_r($values);
+        $record = array_combine($fieldNames, $values);
+        print_r($record);
 
         $this->createProperty();
 
