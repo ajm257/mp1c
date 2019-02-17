@@ -16,6 +16,11 @@ class main {
     static public function start ($filename) {
 
         $records = csv::getRecords($filename);
+        foreach ($records as $record) {
+           $array = $record->returnArray();
+           print_r($array);
+
+        }
 
     }
 }
@@ -65,10 +70,14 @@ class record { //object instantiation
             $this->createProperty($property, $value);
 
         }
-        
-        print_r($this);
 
 
+    }
+
+    public function returnArray() {
+        $array = (array) $this;
+
+        return $array;
     }
 
     public function createProperty($name = 'first', $value = 'keith') {
