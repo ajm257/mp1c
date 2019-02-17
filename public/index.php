@@ -57,9 +57,10 @@ class csv {
 
 class record { //object instantiation
 
-    public function __construct(Array $record = null) {
+    public function __construct(Array $fieldNames = null, $values = null) {
 
-        print_r($record);
+        print_r($fieldNames);
+        print_r($values);
 
         $this->createProperty();
 
@@ -73,12 +74,9 @@ class record { //object instantiation
 
 class recordFactory { //what makes the object
 
-    public static function create(Array $fieldNames = null, Array $record = null) { //can be an empty object
+    public static function create(Array $fieldNames = null, Array $values = null) { //can be an empty object
 
-        print_r($fieldNames);
-        print_r($record);
-
-        //$record = new record($array);
+        $record = new record($fieldNames, $values);
 
         return $record;
 
