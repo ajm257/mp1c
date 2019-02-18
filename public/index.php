@@ -112,6 +112,15 @@ class html
         }
         $html .= '</tr>';
 
+        foreach ($records as $key => $value) {
+
+            $html .= '<tr>';
+            foreach ($value as $key1 => $value1) {
+                $html .= '<td>' . htmlspecialchars($value1) . '</td>';
+            }
+            $html .= '</tr>';
+        }
+
         $html .= '</table>';
         return $html;
     }
