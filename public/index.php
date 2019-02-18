@@ -77,7 +77,7 @@ class record { //object instantiation
         return $array;
     }
 
-    public function createProperty($name = 'first', $value = 'keith') {
+    public function createProperty($name, $value) {
 
         $this->{$name} = $value;
     }
