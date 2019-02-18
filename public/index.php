@@ -17,6 +17,7 @@ class main {
 
         $records = csv::getRecords($filename);
         $table = html::generateTable($records);
+        system::printPage($table);
 
 
         }
@@ -102,42 +103,26 @@ class html
     static public function generateTable($records)
     {
 
-        $count = 0;
+        $html = '<table>'; //start table
 
-        foreach ($records as $record) {
+        $html .= '<tr>'; //header row
 
-            if($count ==0) {
-
-                $array = $record->returnArray();
-                $fields = array_keys($array);
-                $values = array_values($array);
-                print_r($fields);
-                print_r($values);
-
-
-            }else {
-
-                $array = $record->returnArray();
-                $values = array_values($array);
-                print_r($values);
-
-            }
-
-            $count++;
-
-
-            /*$table = $records;
-
-            return $table; */
+        foreach ($records[0] as $key => $value) {
+            $html .= '<th>' . htmlspecialchars($key) . '</th>';
         }
+        $html .= '</tr>';
+
+        $html .= '</table>';
+        return $html;
     }
+
 }
 
-/*class system {
+class system {
 
-    static public function printPage($page) {
+    static public function printPage($table) {
 
-        echo $page;
+        echo $table;
     }
-} */
+}
 
