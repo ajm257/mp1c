@@ -84,21 +84,39 @@ class record { //object instantiation
     }
 }
 
-class recordFactory { //what makes the object
+class recordFactory
+{ //what makes the object
 
-    public static function create(Array $fieldNames = null, Array $values = null) { //can be an empty object
+    public static function create(Array $fieldNames = null, Array $values = null)
+    { //can be an empty object
 
         $record = new record($fieldNames, $values);
 
         return $record;
 
-}
+    }
 
 
 }
 
 class html
 {
+    static public function returnTable($table) {
+
+
+        $html = "<table> $table </table>";
+
+        return $html;
+
+
+    }
+
+    static public function returnRow($row){
+
+        $html = "<tr> $row </tr>";
+
+        return $html;
+    }
 
     static public function generateTable($records)
     {
