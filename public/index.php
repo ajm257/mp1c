@@ -111,6 +111,14 @@ class html
 
     }
 
+    static public function returnHeader($header){
+
+        $html = "<th> $header </th>" ;
+
+        return $html;
+
+    }
+
     static public function returnRow($row){
 
         $html = "<tr> $row </tr>";
@@ -120,10 +128,11 @@ class html
 
     static public function generateTable($records)
     {
+        $html = '<html>';
 
-        $html = '<table>'; //start table
+        $html .= '<table>'; //start table
 
-        $html .= '<tr>'; //header row
+        $html .='<tr>';//header row
 
         foreach ($records[0] as $key => $value) {
             $html .= '<th>' . htmlspecialchars($key) . '</th>';
@@ -139,15 +148,18 @@ class html
             $html .= '</tr>';
         }
 
-        $html .= '</table>';
+        $html .= '</table> </html>';
         return $html;
     }
+
 
 }
 
 class system {
 
     static public function printPage($table) {
+
+
 
         echo $table;
     }
