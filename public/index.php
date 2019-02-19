@@ -27,18 +27,24 @@ class main {
 class csv
 {
 
-    static public function getRecords($filename)
-    {
-
-        if (($handle = fopen($filename, "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $records[] = $data;
+    static public function getRecords($filename) {
+        $file = fopen($filename,"r"); //the data in the file
+        $fieldNames = array();
+        $count = 0;
+        while(! feof($file))
+        {
+            $record = fgetcsv($file);
+            if($count == 0) {
+                $fieldNames = $record;
+            }else{
+                $records[] = recordFactory::create($fieldNames, $record);
             }
-            fclose($handle);
+            $count++;
         }
+        fclose($file);
         return $records;
     }
-}
+    }
 class record { //object instantiation
 
     public function __construct(Array $fieldNames = null, $values = null) {
