@@ -100,17 +100,24 @@ class html
 
     static public function returnHeader($header){
 
-        $html = "<th> $header </th>" ;
+        $htmlHeader = '' ;
 
-        return $html;
+        $htmlHeader .='<tr>';//header row
+
+        foreach ($header as $key => $value) {
+            $htmlHeader .= '<th>' . htmlspecialchars($key) . '</th>';
+        }
+        $htmlHeader .= '</tr>';
+
+        return $htmlHeader;
 
     }
 
-    static public function returnRow($records){
+    static public function returnRow($recordsRow){
 
         $htmlRow = '';
 
-        foreach ($records as $key => $value) {
+        foreach ($recordsRow as $key => $value) {
 
             $htmlRow .= '<tr>';
             foreach ($value as $key1 => $value1) {
@@ -135,12 +142,7 @@ class html
 
         $html .= '<table class="table table-striped">'; //start table
 
-        $html .='<tr>';//header row
-
-        foreach ($records[0] as $key => $value) {
-            $html .= '<th>' . htmlspecialchars($key) . '</th>';
-        }
-        $html .= '</tr>';
+        $html .= self::returnHeader($records[0]);
 
         $html .= self::returnRow($records);
 
