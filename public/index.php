@@ -106,11 +106,20 @@ class html
 
     }
 
-    static public function returnRow($row){
+    static public function returnRow($records){
 
-        $html = "<tr> $row </tr>";
+        $htmlRow = '';
 
-        return $html;
+        foreach ($records as $key => $value) {
+
+            $htmlRow .= '<tr>';
+            foreach ($value as $key1 => $value1) {
+                $htmlRow .= '<td>' . htmlspecialchars($value1) . '</td>';
+            }
+            $htmlRow .= '</tr>';
+        }
+
+        return $htmlRow;
 
     }
 
@@ -133,14 +142,7 @@ class html
         }
         $html .= '</tr>';
 
-        foreach ($records as $key => $value) {
-
-            $html .= '<tr>';
-            foreach ($value as $key1 => $value1) {
-                $html .= '<td>' . htmlspecialchars($value1) . '</td>';
-            }
-            $html .= '</tr>';
-        }
+        $html .= self::returnRow($records);
 
         $html .= '</table> </html>';
         return $html;
