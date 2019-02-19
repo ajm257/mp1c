@@ -9,11 +9,12 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 
-main::start("example.csv");
+$filename = 'example.csv';
+$program = new main($filename);
 
 class main {
 
-    static public function start ($filename) {
+    public function __construct($filename) {
 
         $records = csv::getRecords($filename);
         $table = html::generateTable($records);
@@ -124,6 +125,7 @@ class html
         $html = "<tr> $row </tr>";
 
         return $html;
+
     }
 
     static public function generateTable($records)
