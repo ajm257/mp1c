@@ -116,9 +116,15 @@ class html
 
     static public function generateTable($records)
     {
+
         $html = '<html>';
 
-        $html .= '<table>'; //start table
+        $html .= '<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script></head>';
+
+        $html .= '<table class="table table-striped">'; //start table
 
         $html .='<tr>';//header row
 
