@@ -24,41 +24,21 @@ class main {
         }
 }
 
-class csv {
+class csv
+{
 
-    static public function getRecords($filename) {
+    static public function getRecords($filename)
+    {
 
-        $file = fopen($filename,"r"); //the data in the file
-
-        $fieldNames = array();
-
-        $count = 0;
-
-        while(! feof($file))
-        {
-            $record = fgetcsv($file);
-
-            if($count == 0) {
-
-                $fieldNames = $record;
-
-            }else{
-
-                $records[] = recordFactory::create($fieldNames, $record);
-
-
+        if (($handle = fopen($filename, "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                $records[] = $data;
             }
-
-            $count++;
-
+            fclose($handle);
         }
-
-        fclose($file);
-
         return $records;
     }
 }
-
 class record { //object instantiation
 
     public function __construct(Array $fieldNames = null, $values = null) {
