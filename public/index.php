@@ -88,7 +88,7 @@ class recordFactory
 
 class html
 {
-    static public function returnTable($table) {
+    static public function returnTable() {
 
 
         $htmlTable = '';
