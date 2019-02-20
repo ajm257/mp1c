@@ -140,8 +140,7 @@ class html
     static public function generateTable($records)
     {
 
-
-        $html = self::returnTable($records);
+        $html = self::returnTable();
 
         $html .= self::returnHeader($records[0]);
 
